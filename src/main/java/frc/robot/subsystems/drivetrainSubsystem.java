@@ -40,6 +40,12 @@ public class drivetrainSubsystem extends SubsystemBase {
 
   PIDController turnController;
 
+  public void driveRobot(Double X, double Y) {
+
+    robotDrive.arcadeDrive(-Y, X, true);
+    
+  }
+
   public void driveStraight(double Power) {
 
     leftDrive.set(Power);
