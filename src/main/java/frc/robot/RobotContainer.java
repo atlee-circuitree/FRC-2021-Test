@@ -10,7 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.drivetrainSubsystem;
-import frc.robot.commands.driveCommand;
+//import frc.robot.commands.driveCommand;
 import frc.robot.commands.driveStraightCommand;
 
 public class RobotContainer {
@@ -47,9 +47,9 @@ public class RobotContainer {
 
   public void teleopInit() {
 
-    driveCommand m_driveCommand = new driveCommand(Xbox1, m_drivetrainSubsystem);
+    //driveCommand m_driveCommand = new driveCommand(Xbox1, m_drivetrainSubsystem);
 
-    m_drivetrainSubsystem.setDefaultCommand(m_driveCommand);
+    //m_drivetrainSubsystem.setDefaultCommand(m_driveCommand);
 
   }
 
