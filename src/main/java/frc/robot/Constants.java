@@ -13,9 +13,7 @@ public final class Constants {
 
   //Drivetrain
 
-  public static int driveFrontleftMotor = 2;
-  public static int driveFrontrightMotor = 4;
-  public static int driveBackleftMotor = 3;
-  public static int driveBackrightMotor = 1;
-
+  public static int driveleftMotor = 2;
+  public static int driverightMotor = 4;
+   
 }

@@ -27,16 +27,12 @@ public class drivetrainSubsystem extends SubsystemBase {
   SpeedControllerGroup leftDrive;
   SpeedControllerGroup rightDrive;
   DifferentialDrive robotDrive;
+ 
+  CANSparkMax leftMotor;
+  CANSparkMax rightMotor;
 
-  CANSparkMax left_frontmotor;
-  CANSparkMax left_backmotor;
-  CANSparkMax right_frontmotor;
-  CANSparkMax right_backmotor;
-
-  CANEncoder left_frontEncoder;
-  CANEncoder left_backEncoder;
-  CANEncoder right_frontEncoder;
-  CANEncoder right_backEncoder;
+  CANEncoder leftEncoder;
+  CANEncoder rightEncoder;
 
   PIDController turnController;
 
@@ -48,54 +44,54 @@ public class drivetrainSubsystem extends SubsystemBase {
 
   public void driveStraight(double Power) {
 
-    leftDrive.set(Power);
-    rightDrive.set(Power);
+    leftMotor.set(Power);
+    rightMotor.set(Power);
 
   }
 
   public void correctLeft(double Power) {
 
-    leftDrive.set(Power - 3);
-    rightDrive.set(Power);
+    leftMotor.set(Power - 3);
+    rightMotor.set(Power);
 
   }
 
   public void correctRight(double Power) {
 
-    leftDrive.set(Power);
-    rightDrive.set(Power - 3);
+    leftMotor.set(Power);
+    rightMotor.set(Power - 3);
 
   }
 
   public void driveStop() {
 
-    leftDrive.set(0);
-    rightDrive.set(0);
+    leftMotor.set(0);
+    rightMotor.set(0);
 
   }
 
   public void resetEncoders() {
 
-    left_frontEncoder.setPosition(0);
-    right_frontEncoder.setPosition(0);
+    leftEncoder.setPosition(0);
+    rightEncoder.setPosition(0);
 
   }
 
   public double getLeftEncoder() {
 
-    return left_frontEncoder.getPosition();
+    return leftEncoder.getPosition();
 
   }
 
   public double getRightEncoder() {
 
-    return right_frontEncoder.getPosition();
+    return rightEncoder.getPosition();
 
   }
 
   public double getAverageEncoderDistance() {
 
-    return (right_frontEncoder.getPosition() + left_frontEncoder.getPosition()) / 2.0;
+    return (rightEncoder.getPosition() + leftEncoder.getPosition()) / 2.0;
      
   }
 
