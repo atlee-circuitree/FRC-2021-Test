@@ -11,7 +11,6 @@
 
 package frc.robot.subsystems;
 
-import com.kauailabs.navx.frc.AHRS;
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 
@@ -22,8 +21,6 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class drivetrainSubsystem extends SubsystemBase {
    
-  AHRS ahrs;
-
   SpeedControllerGroup leftDrive;
   SpeedControllerGroup rightDrive;
   DifferentialDrive robotDrive;
