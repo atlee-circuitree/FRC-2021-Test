@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.XboxController;
+
 public final class Constants {
 
   // Map all the motors / pnumatics here
@@ -15,5 +17,7 @@ public final class Constants {
 
   public static int driveleftMotor = 1;
   public static int driverightMotor = 2;
+
+  public XboxController Xbox1 = new XboxController(0);
    
 }

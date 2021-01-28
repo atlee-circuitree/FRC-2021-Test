@@ -25,18 +25,29 @@ public class drivetrainSubsystem extends SubsystemBase {
   SpeedControllerGroup rightDrive;
   DifferentialDrive robotDrive;
  
-  CANSparkMax leftMotor;
-  CANSparkMax rightMotor;
+  CANSparkMax leftMotor = new CANSparkMax(1, null);
+  CANSparkMax rightMotor = new CANSparkMax(2, null);
 
   CANEncoder leftEncoder;
   CANEncoder rightEncoder;
 
   PIDController turnController;
 
+  public void driveSetup(CANSparkMax leftMotor, CANSparkMax rightMotor){
+
+  leftEncoder = leftMotor.getEncoder();
+  rightEncoder = rightMotor.getEncoder();
+
+  robotDrive = new DifferentialDrive(leftMotor, rightMotor);
+
+  resetEncoders();
+
+  }
+
   public void driveRobot(Double X, double Y) {
 
     robotDrive.arcadeDrive(-Y, X, true);
-    
+  
   }
 
   public void driveStraight(double Power) {

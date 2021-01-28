@@ -7,15 +7,22 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.XboxController;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.drivetrainSubsystem;
-//import frc.robot.commands.driveCommand;
+import frc.robot.commands.driveCommand;
+import frc.robot.Constants;
 import frc.robot.commands.driveStraightCommand;
 
 public class RobotContainer {
 
   //217.2944297082
+
+  //constants
+
+  public static Constants m_constants;
 
   //subsystems
    
@@ -23,7 +30,7 @@ public class RobotContainer {
 
   //commands
 
-  public Command GenerateEncoderDriveCommand(double inches, int speed)
+  public Command GenerateEncoderDriveCommand(double inches, double speed)
   {
 
     
@@ -35,10 +42,6 @@ public class RobotContainer {
       
   }
 
-  //controls
-
-  public static XboxController Xbox1 = new XboxController(0);
-
   public RobotContainer() {
 
     configureButtonBindings();
@@ -47,9 +50,18 @@ public class RobotContainer {
 
   public void teleopInit() {
 
-    //driveCommand m_driveCommand = new driveCommand(Xbox1, m_drivetrainSubsystem);
+    driveCommand m_driveCommand = new driveCommand(m_constants.Xbox1, m_drivetrainSubsystem);
 
-    //m_drivetrainSubsystem.setDefaultCommand(m_driveCommand);
+    m_drivetrainSubsystem.setDefaultCommand(m_driveCommand);
+
+  }
+
+  public void driveSetup() {
+
+    CANSparkMax leftMotor = new CANSparkMax(Constants.driveleftMotor, MotorType.kBrushless);
+    CANSparkMax rightMotor = new CANSparkMax(Constants.driverightMotor, MotorType.kBrushless);
+
+    m_drivetrainSubsystem.driveSetup(leftMotor, rightMotor);
 
   }
 
@@ -60,7 +72,7 @@ public class RobotContainer {
 
   public Command getAutonomousCommand() {
    
-    return GenerateEncoderDriveCommand(60, 40);
+    return GenerateEncoderDriveCommand(60, .2);
 
   }
 

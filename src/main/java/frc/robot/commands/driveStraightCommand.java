@@ -6,12 +6,12 @@ import frc.robot.subsystems.drivetrainSubsystem;
 public class driveStraightCommand extends CommandBase {
 
   double encoderTarget;
-  int targetSpeed;
+  double targetSpeed;
   double encoderReadingLeft;
   double encoderReadingRight;
   drivetrainSubsystem m_subsystem;
 
-  public driveStraightCommand(double targetValue, int speed, drivetrainSubsystem driveSubsystem) {
+  public driveStraightCommand(double targetValue, double speed, drivetrainSubsystem driveSubsystem) {
 
     m_subsystem = driveSubsystem;
     addRequirements(m_subsystem);
