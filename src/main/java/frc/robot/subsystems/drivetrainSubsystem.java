@@ -48,7 +48,7 @@ public class drivetrainSubsystem extends SubsystemBase {
 
   public void correctLeft(double Power) {
 
-    leftMotor.set(Power - 3);
+    leftMotor.set(Power - .1);
     rightMotor.set(Power);
 
   }
@@ -56,7 +56,7 @@ public class drivetrainSubsystem extends SubsystemBase {
   public void correctRight(double Power) {
 
     leftMotor.set(Power);
-    rightMotor.set(Power - 3);
+    rightMotor.set(Power - .1);
 
   }
 
