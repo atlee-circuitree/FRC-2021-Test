@@ -10,6 +10,7 @@ package frc.robot;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.drivetrainSubsystem;
 import frc.robot.commands.driveCommand;
@@ -58,10 +59,15 @@ public class RobotContainer {
 
   public void driveSetup() {
 
-    CANSparkMax leftMotor = new CANSparkMax(Constants.driveleftMotor, MotorType.kBrushless);
-    CANSparkMax rightMotor = new CANSparkMax(Constants.driverightMotor, MotorType.kBrushless);
+    CANSparkMax leftFrontMotor = new CANSparkMax(Constants.driveFrontLeftMotor, MotorType.kBrushless);
+    CANSparkMax rightFrontMotor = new CANSparkMax(Constants.driveFrontRightMotor, MotorType.kBrushless);
+    CANSparkMax leftBackMotor = new CANSparkMax(Constants.driveBackLeftMotor, MotorType.kBrushless);
+    CANSparkMax rightBackMotor = new CANSparkMax(Constants.driveBackRightMotor, MotorType.kBrushless);
 
-    m_drivetrainSubsystem.driveSetup(leftMotor, rightMotor);
+    SpeedControllerGroup leftDrive = new SpeedControllerGroup(leftFrontMotor, leftBackMotor);
+    SpeedControllerGroup rightDrive = new SpeedControllerGroup(rightFrontMotor, rightBackMotor); 
+
+    m_drivetrainSubsystem.driveSetup(leftDrive, rightDrive);
 
   }
 

@@ -21,24 +21,39 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class drivetrainSubsystem extends SubsystemBase {
    
-  SpeedControllerGroup leftDrive;
-  SpeedControllerGroup rightDrive;
   DifferentialDrive robotDrive;
  
-  CANSparkMax leftMotor = new CANSparkMax(1, null);
-  CANSparkMax rightMotor = new CANSparkMax(2, null);
+  CANSparkMax leftFrontMotor = new CANSparkMax(1, null);
+  CANSparkMax rightFrontMotor = new CANSparkMax(2, null);
+  CANSparkMax leftBackMotor = new CANSparkMax(1, null);
+  CANSparkMax rightBackMotor = new CANSparkMax(2, null);
+
+  SpeedControllerGroup leftDrive = new SpeedControllerGroup(leftFrontMotor, leftBackMotor);
+  SpeedControllerGroup rightDrive = new SpeedControllerGroup(rightFrontMotor, rightBackMotor);
 
   CANEncoder leftEncoder;
   CANEncoder rightEncoder;
 
   PIDController turnController;
 
-  public void driveSetup(CANSparkMax leftMotor, CANSparkMax rightMotor){
+  static final double kP = 0.03;
+  static final double kI = 0.00;
+  static final double kD = 0.00;
+  static final double kF = 0.00;
 
-  leftEncoder = leftMotor.getEncoder();
-  rightEncoder = rightMotor.getEncoder();
+  static final double kToleranceDegrees = 2.0f;
 
-  robotDrive = new DifferentialDrive(leftMotor, rightMotor);
+  final static int frontLeftChannel = 2;
+  final static int rearLeftChannel = 3;
+  final static int frontRightChannel = 1;
+  final static int rearRightChannel = 0;
+
+  public void driveSetup(SpeedControllerGroup leftDrive, SpeedControllerGroup rightDrive){
+
+  leftEncoder = leftFrontMotor.getEncoder();
+  rightEncoder = rightFrontMotor.getEncoder();
+
+  robotDrive = new DifferentialDrive(leftFrontMotor, rightFrontMotor);
 
   resetEncoders();
 
@@ -52,29 +67,29 @@ public class drivetrainSubsystem extends SubsystemBase {
 
   public void driveStraight(double Power) {
 
-    leftMotor.set(Power);
-    rightMotor.set(Power);
+    leftFrontMotor.set(Power);
+    rightFrontMotor.set(Power);
 
   }
 
   public void correctLeft(double Power) {
 
-    leftMotor.set(Power - .1);
-    rightMotor.set(Power);
+    leftFrontMotor.set(Power - .1);
+    rightFrontMotor.set(Power);
 
   }
 
   public void correctRight(double Power) {
 
-    leftMotor.set(Power);
-    rightMotor.set(Power - .1);
+    leftFrontMotor.set(Power);
+    rightFrontMotor.set(Power - .1);
 
   }
 
   public void driveStop() {
 
-    leftMotor.set(0);
-    rightMotor.set(0);
+    leftFrontMotor.set(0);
+    rightFrontMotor.set(0);
 
   }
 
