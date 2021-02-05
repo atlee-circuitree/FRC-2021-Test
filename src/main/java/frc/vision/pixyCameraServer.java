@@ -1,7 +1,5 @@
 package frc.vision;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-
 import edu.wpi.cscore.CvSource;
 import edu.wpi.first.cameraserver.CameraServer;
 
@@ -28,8 +26,6 @@ public class pixyCameraServer implements Runnable {
 
     private pixyCameraServer pixy2USBJNI;
 
-    public AtomicBoolean toggleLamp = new AtomicBoolean(false);
-
     @Override
     public void run() {
         // Uncomment these if you want extra, "regular" USB cameras
@@ -41,7 +37,7 @@ public class pixyCameraServer implements Runnable {
         pixy2USBJNI = new pixyCameraServer();
         int init_result = pixy2USBJNI.pixy2USBInit();
         if (init_result == 0) {
-            
+
             pixy2USBJNI.pixy2USBGetVersion();
             
             CvSource outputStream = CameraServer.getInstance().putVideo("Target Reticle", PIXY2_RAW_FRAME_WIDTH, PIXY2_RAW_FRAME_HEIGHT);

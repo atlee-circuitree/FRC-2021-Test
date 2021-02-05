@@ -67,29 +67,29 @@ public class drivetrainSubsystem extends SubsystemBase {
 
   public void driveStraight(double Power) {
 
-    leftFrontMotor.set(Power);
-    rightFrontMotor.set(Power);
+    leftDrive.set(Power);
+    rightDrive.set(Power);
 
   }
 
   public void correctLeft(double Power) {
 
-    leftFrontMotor.set(Power - .1);
-    rightFrontMotor.set(Power);
+    leftDrive.set(Power - .1);
+    rightDrive.set(Power);
 
   }
 
   public void correctRight(double Power) {
 
-    leftFrontMotor.set(Power);
-    rightFrontMotor.set(Power - .1);
+    leftDrive.set(Power);
+    rightDrive.set(Power - .1);
 
   }
 
   public void driveStop() {
 
-    leftFrontMotor.set(0);
-    rightFrontMotor.set(0);
+    leftDrive.set(0);
+    rightDrive.set(0);
 
   }
 
