@@ -53,7 +53,7 @@ public class drivetrainSubsystem extends SubsystemBase {
   leftEncoder = leftFrontMotor.getEncoder();
   rightEncoder = rightFrontMotor.getEncoder();
 
-  robotDrive = new DifferentialDrive(leftFrontMotor, rightFrontMotor);
+  robotDrive = new DifferentialDrive(leftDrive, rightDrive);
 
   resetEncoders();
 
