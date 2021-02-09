@@ -15,10 +15,10 @@ public final class Constants {
 
   //Drivetrain
 
-  public static int driveFrontLeftMotor = 1;
-  public static int driveFrontRightMotor = 2;
+  public static int driveFrontLeftMotor = 2;
+  public static int driveFrontRightMotor = 4;
   public static int driveBackLeftMotor = 3;
-  public static int driveBackRightMotor = 4;
+  public static int driveBackRightMotor = 1;
 
   public XboxController Xbox1 = new XboxController(0);
    
