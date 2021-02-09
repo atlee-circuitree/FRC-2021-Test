@@ -7,12 +7,9 @@
 
 package frc.robot.subsystems;
 
-import java.util.ArrayList;
-
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import io.github.pseudoresonance.pixy2api.Pixy2;
-import io.github.pseudoresonance.pixy2api.Pixy2CCC.Block;
 
 public class pixySubsystem extends SubsystemBase {
 
@@ -25,7 +22,7 @@ public class pixySubsystem extends SubsystemBase {
 
   }
 
-  public double getCellLocation() {
+  public int getCellLocation() {
 
     if (!isCamera)
 
@@ -37,33 +34,23 @@ public class pixySubsystem extends SubsystemBase {
 
     pixycam.getCCC().getBlocks( false , 255 , 255 );  
  
-    ArrayList<Block> blocks = pixycam.getCCC().getBlocks();  
+    int blocks = pixycam.getCCC().getBlocks();  
     
-    if (blocks.size() > 0) {
+    if (blocks > 0) {
     
-    double xcoord = blocks.get( 0 ).getX();  
-
-    double ycoord = blocks.get( 0 ).getY();  
-
-    String data = blocks.get( 0 ).toString();  
+    double xcoord = blocks;  
 
     SmartDashboard.putBoolean( "present" , true ); 
 
     SmartDashboard.putNumber( "Xccord" ,xcoord);
 
-    SmartDashboard.putNumber( "Ycoord" , ycoord);
-
-    SmartDashboard.putString( "Data" , data );
     }
 
     else
 
     SmartDashboard.putBoolean( "present" , false );
 
-    SmartDashboard.putNumber( "size" , blocks.size());  
-
-
-    return xcoord;
+    return blocks;
 
   }
 
