@@ -8,15 +8,16 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.drivetrainSubsystem;
 
-public class driveAndCorrectTowardBalls extends CommandBase {
+public class driveAndCorrectTowardBallsCommand extends CommandBase {
 
   double targetSpeed;
   double encoderReadingLeft;
   double encoderReadingRight;
   drivetrainSubsystem m_subsystem;
-   
-  public driveAndCorrectTowardBalls() {
+
+  public driveAndCorrectTowardBallsCommand() {
      
   }
  
