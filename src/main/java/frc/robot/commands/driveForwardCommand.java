@@ -3,7 +3,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.drivetrainSubsystem;
 
-public class driveStraightCommand extends CommandBase {
+public class driveForwardCommand extends CommandBase {
 
   double encoderTarget;
   double targetSpeed;
@@ -11,7 +11,7 @@ public class driveStraightCommand extends CommandBase {
   double encoderReadingRight;
   drivetrainSubsystem m_subsystem;
 
-  public driveStraightCommand(double targetValue, double speed, drivetrainSubsystem driveSubsystem) {
+  public driveForwardCommand(double targetValue, double speed, drivetrainSubsystem driveSubsystem) {
 
     m_subsystem = driveSubsystem;
     addRequirements(m_subsystem);
@@ -35,19 +35,7 @@ public class driveStraightCommand extends CommandBase {
     encoderReadingLeft = m_subsystem.getLeftEncoder();
     encoderReadingRight = m_subsystem.getRightEncoder();
      
-    if(encoderReadingLeft > encoderReadingRight) {
-
-      m_subsystem.correctLeft(targetSpeed);
-
-    } else if (encoderReadingRight > encoderReadingLeft) {
-
-      m_subsystem.correctRight(targetSpeed);
-
-    } else {
-
-      m_subsystem.driveStraight(targetSpeed);
-
-    }
+    m_subsystem.driveStraight(targetSpeed);
 
   }
 
