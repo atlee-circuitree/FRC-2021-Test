@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.drivetrainSubsystem;
 import frc.robot.commands.driveCommand;
 import frc.robot.Constants;
-import frc.robot.commands.driveStraightCommand;
+import frc.robot.commands.driveForwardCommand;
 
 public class RobotContainer {
 
@@ -37,7 +37,7 @@ public class RobotContainer {
     
       double encoder = inches * 217.2944297082;
 
-      Command m_driveStraightUntilEncoderValueCommand = new driveStraightCommand(encoder, speed, m_drivetrainSubsystem);
+      Command m_driveStraightUntilEncoderValueCommand = new driveForwardCommand(encoder, speed, m_drivetrainSubsystem);
 
       return m_driveStraightUntilEncoderValueCommand;
       
